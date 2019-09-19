@@ -1,0 +1,77 @@
+.searchdiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;	
+}
+
+#insearchdiv {
+	border: 1px solid;
+	border-color: lightgray;
+	padding-left: 10pt;
+	padding-right: 10pt;
+	padding-bottom: 20pt;
+}
+
+#searchbar {
+	border-radius: 5px;
+	padding-right: 150pt;
+}
+
+.card {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+}
+
+
+.artists {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.card:hover{
+	background-color: lightgray;
+
+}
+
+.name {
+	font-family: 'Heebo', sans-serif;
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+.school {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13pt;
+}
+
+.photos {
+	padding-left: 10pt;
+}
+
+.desc {
+	padding-left: 10pt;
+	padding-right: 10pt;
+}
+
+tr {
+	border: 1px solid;
+	border-color: lightgray;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+p {
+	margin-top: 3pt;
+	margin-bottom: 3pt;
+}
+
+img {
+	padding-top: 5pt;
+	padding-bottom: 5pt;
+}
