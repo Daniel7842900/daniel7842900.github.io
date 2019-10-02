@@ -8,6 +8,7 @@
 #addArtistToggle {
 	border: none;
 	padding: 5pt;
+	border-radius: 5pt;
 }
 
 #insearchdiv {
@@ -93,6 +94,18 @@
     padding-bottom: 5pt;
     padding-right: 45pt;
     padding-left: 45pt;
+    border-radius: 5pt;
+}
+
+.btnClass {
+	background-color: red;
+    color: white;
+    border: none;
+    padding-top: 3pt;
+    padding-bottom: 5pt;
+    padding-left: 5pt;
+    padding-right: 5pt;
+    border-radius: 5pt;
 }
 
 tr {
