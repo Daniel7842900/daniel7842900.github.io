@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./lab4.css">
+	<link href="https://fonts.googleapis.com/css?family=Heebo|Open+Sans&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="lab4.js"></script>
+</head>
+<body>
+	<div class="searchdiv">
+		<div id="insearchdiv">
+			<h2 id="art">Artist Directory</h1>
+			<input id="searchbar" type="text" name="search">
+			<button id="addArtistToggle" onclick="addToggleFunction()">Add artist</button>
+		</div>
+		
+	</div>
+	<div id="addDiv">
+		<!-- <form>
+			<input type="text" id="artistName" name="name" placeholder="Artist Name"><br>
+			<input type="text" id="artistAbout" name="description" placeholder="About artist"><br>
+			<input type="url" id="artistUrl" name="url" placeholder="Image url">
+		</form> -->
+		
+		<input type="text" id="artistName" name="name" placeholder="Artist Name" maxlength="40"><br>
+		<input type="text" id="artistAbout" name="description" placeholder="About artist" maxlength="40"><br>
+		<input type="url" id="artistUrl" name="url" placeholder="Image url">
+		<button id="addArtistBtn" onclick="addFunction()">Add</button>
+	</div>
+	<div id="artistDiv">
+		<table id="artists">
+			<tbody id="tableBody">
+				<!-- <tr id="artistTr">
+					<td>
+						<div id="artistCard" class="card">
+							<img id="artistImg" src="https://randomuser.me/api/portraits/med/women/12.jpg" class="photos">
+							<div id="artistCardDiv" class="desc">
+								<p id="artistN" class="name">Jenny Serone</p>
+								<p id="artistD" class="school">Sculpture</p>
+							</div>
+						</div>
+					</td>	
+				</tr> -->
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

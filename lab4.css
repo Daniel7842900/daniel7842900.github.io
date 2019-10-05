@@ -1,0 +1,132 @@
+.searchdiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;	
+}
+
+#addArtistToggle {
+	border: none;
+	padding: 5pt;
+	border-radius: 5pt;
+}
+
+#insearchdiv {
+	border: 1px solid;
+	border-color: lightgray;
+	padding-left: 10pt;
+	padding-right: 10pt;
+	padding-bottom: 20pt;
+}
+
+#searchbar {
+	border-radius: 5px;
+	padding-right: 150pt;
+	padding-top: 5pt;
+	padding-bottom: 5pt;
+}
+
+#artistCard {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+}
+
+
+#artists {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#artistCard:hover{
+	background-color: lightgray;
+
+}
+
+#artistN {
+	font-family: 'Heebo', sans-serif;
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+#artistD {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13pt;
+}
+
+#artistImg {
+	padding-left: 10pt;
+}
+
+#artistCardDiv {
+	padding-left: 10pt;
+	padding-right: 10pt;
+}
+
+#addDiv {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+
+#artistName {
+	padding-right: 40pt;
+	padding-left: 40pt;
+}
+
+#artistAbout {
+	padding-right: 40pt;
+	padding-left: 40pt;
+}
+
+#artistUrl {
+	padding-right: 40pt;
+	padding-left: 40pt;
+}
+
+#addArtistBtn {
+	border: none;
+    padding-top: 5pt;
+    padding-bottom: 5pt;
+    padding-right: 45pt;
+    padding-left: 45pt;
+    border-radius: 5pt;
+}
+
+.btnClass {
+	background-color: red;
+    color: white;
+    border: none;
+    padding-top: 3pt;
+    padding-bottom: 5pt;
+    padding-left: 5pt;
+    padding-right: 5pt;
+    border-radius: 5pt;
+}
+
+tr {
+	border: 1px solid;
+	border-color: lightgray;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+p {
+	margin-top: 3pt;
+	margin-bottom: 3pt;
+}
+
+img {
+	padding-top: 5pt;
+	padding-bottom: 5pt;
+}
+
+input {
+	text-align: center;
+}
