@@ -1,128 +1,153 @@
-function addToggleFunction() {
-	var x = document.getElementById("addDiv");
-	var inputName = document.getElementById("artistName");
-	var inputAbout = document.getElementById("artistAbout");
-	var inputUrl = document.getElementById("artistUrl");
-	var inputBtn = document.getElementById("addArtistBtn");
 
-	x.appendChild(inputName);
-	x.appendChild(inputAbout);
-	x.appendChild(inputUrl);
-	x.appendChild(inputBtn);
+document.addEventListener('DOMContentLoaded', function(){ 
+    
 
-	if(x.style.display === "flex") {
-		x.style.display = "none";
-	} else {
-		x.style.display = "flex";
-		inputName.value = "";
-		inputAbout.value = "";
-		inputUrl.value = "";
-	}
+    renderUser("");
+    
+}, false);
 
-	console.log(x);
+function showAdd() {
+    var x = document.getElementById("addDiv");
+    if (x.style.display == "flex") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "flex";
+        artistName.value = "";
+		artistAbout.value = "";
+		artistUrl.value = "";
+    }
 }
 
-function addFunction() {
-	myStorage = window.localStorage;
-	var y = document.getElementById("addDiv");
-	var inputName2 = document.getElementById("artistName");
-	var inputAbout2 = document.getElementById("artistAbout");
-	var inputUrl2 = document.getElementById("artistUrl");
-	var inputBtn2 = document.getElementById("addArtistBtn");
+function renderUser(keyword) {
+	var myStorage = window.localStorage;
 
-	y.appendChild(inputName2);
-	y.appendChild(inputAbout2);
-	y.appendChild(inputUrl2);
-	y.appendChild(inputBtn2);
+	//This gets stringified users from local storage and then put those into an array.
+	let userListRender = (JSON.parse(myStorage.getItem("userList")));
+
+	//This is the container that contains a user.
+    let userInfoBox = document.querySelector("#userBox");
+
+    //if userInfoBox is empty, create a div and set id as userBox.
+    if (!userInfoBox) {
+        userInfoBox = document.createElement("div");
+        userInfoBox.id ="userBox";
+    }
+
+    console.log(userInfoBox);
+
+    //This is reseting all the userInfoBox.
+    userInfoBox.innerHTML = "";
 
 
-	var table = document.getElementById("artists");
-	var tbody = document.getElementById("tableBody");
-	var tr = document.createElement("TR");
-	tr.setAttribute("class", "artistTr");
+    console.log(userListRender);
 
-	var uniqueId = new Date().getUTCMilliseconds();
-	console.log(uniqueId);
-	tr.setAttribute("id", uniqueId);
-	console.log(tr.id);
+    //This is looping through userListRender array list.
+    userListRender.forEach((item) => {
+        console.log(item);
 
-	var td = document.createElement("TD");
-	var div = document.createElement("DIV");
-	div.setAttribute("id", "artistCard");
-	var divInside = document.createElement("DIV");
-	divInside.setAttribute("id", "artistCardDiv");
-	var pName = document.createElement("P");
-	pName.setAttribute("id", "artistN")
-	var pDesc = document.createElement("P");
-	pDesc.setAttribute("id", "artistD");
-	var deleteBtn = document.createElement("BUTTON");
-	deleteBtn.setAttribute("class", "btnClass");
-	deleteBtn.textContent = "Delete";
-	deleteBtn.setAttribute("onClick", `deleteFunction(${uniqueId});`);
+        console.log(item.name.indexOf(keyword));
 
-	
+        //if the name of item is bigger than or equal to 0, create the whole structure of the card.
+        if (item.name.indexOf(keyword) >= 0) {
+            let cardDiv = document.createElement("div");
+            cardDiv.className = "cardDiv";
 
-	var artistUrl = document.getElementById("artistUrl").value;
-	var artistName = document.getElementById("artistName").value;
-	var artistAbout = document.getElementById("artistAbout").value;
+            let nameDescDiv = document.createElement("div");
+            nameDescDiv.className = "nameDescDiv";
 
-	var image = new Image;
-	image.setAttribute("id", "artistImg");
-	image.src = artistUrl;
+            let name = document.createElement("h3");
+            name.innerText = item.name;
+            name.className = "artistName";
 
-	//var trArtistUrl = document.getElementById("artistImg");
-	//trArtistUrl.src = artistUrl;
-	if(myStorage == null) {
-		myStorage.setItem('name', artistName);
-		myStorage.setItem('about', artistAbout);
-	}
-	/*myStorage.setItem('name', artistName);
-	myStorage.setItem('about', artistAbout);*/
-	var trArtistName = myStorage.getItem('name');
-	var trArtistAbout = myStorage.getItem('about');
-	console.log(trArtistName);
-	console.log(trArtistAbout);
-	/*var parsedName = JSON.parse(trArtistName);
-	var parsedAbout = JSON.parse(trArtistAbout);*/
+            let desc = document.createElement("p");
+            desc.innerText = item.about;
+            desc.className = "artistDesc";
 
-	/*console.log(parsedName);
-	console.log(parsedAbout);*/
-	var trArtistNameNode = document.createTextNode(trArtistName);
-	var trArtistAboutNode = document.createTextNode(trArtistAbout);
+            let img = document.createElement("img");
+            // img.src = "https://randomuser.me/api/portraits/med/women/12.jpg";
+            img.src = item.imgURL;
+            img.className = "artistImg";
 
-	/*pName.appendChild(parsedName);
-	pDesc.appendChild(parsedAbout);*/
-	pName.appendChild(trArtistNameNode);
-	pDesc.appendChild(trArtistAboutNode);
+            let delBtn = document.createElement("button");
+            delBtn.className = "artistDelBtn";
+            delBtn.innerText = "Delete";
+            let uniqueCardId = item.id;
+            delBtn.addEventListener("click", (item) => {
+                console.log(item);
+                for (let i = 0; i < userListRender.length; i++) {
+                    if(userListRender[i].id === uniqueCardId) {
+                        console.log("same");
+                        userListRender.splice(i, 1);
+                    }
+                }
+                console.log(userListRender);
+                
+                myStorage.setItem("userList", JSON.stringify(userListRender));
+                renderUser("");
+            });
 
-	//img.appendChild(image);
-	//img.appendChild(trArtistUrl);
-	divInside.appendChild(pName);
-	divInside.appendChild(pDesc);
+            console.log(userInfoBox);
+            nameDescDiv.appendChild(name);
+            nameDescDiv.appendChild(desc);
 
-	div.appendChild(image);
-	div.appendChild(divInside);
-	div.appendChild(deleteBtn);
+            cardDiv.appendChild(img);
+            cardDiv.appendChild(nameDescDiv);
+            cardDiv.appendChild(delBtn);
 
-	tr.appendChild(div);
+            userInfoBox.appendChild(cardDiv);
+            
+        }
 
-	tbody.appendChild(tr);
-
-	table.appendChild(tbody);
-
-	y.style.display = "none";
-	inputName2.value = "";
-	inputAbout2.value = "";
-	inputUrl2.value = "";
-
-	console.log(table);
-
+        document.body.appendChild(userInfoBox);
+        
+    });
 }
 
-function deleteFunction(id) {
+function addUser() {
+	var myStorage = window.localStorage;
+	//This is grabbing users' info from local storage.
+    let userList = JSON.parse(myStorage.getItem("userList"));
 
-	document.getElementById(id).remove();
 
+    let artistNameInput = document.getElementById("artistName");
+    let artistAboutInput = document.getElementById("artistAbout");
+    let artistImgInput = document.getElementById("artistUrl");
 
+    console.log(artistNameInput.value);
+    //console.log(artistAboutInput.value);
+    //console.log(artistImgInput.value);
+
+    //This is creating a user object, which contains id, name, about and url.
+    let user = {
+        id: new Date(),
+        name: artistNameInput.value,
+        about: artistAboutInput.value,
+        imgURL: artistImgInput.value
+    };
+
+    //If userList exists, just push new user info into the userList.
+    //If userList doesn't exist (when there is no user), create an empty userList
+    //and then push new user info.
+    if (userList) {
+        userList.push(user);
+    } else {
+        userList = []
+        userList.push(user);
+    }
+
+    //This stores stringified userList into the local storage.
+    myStorage.setItem("userList", JSON.stringify(userList));
+
+    //This renders user list to the web page.
+    renderUser("");
+}
+
+function search() {
+
+	//This is getting input "searchbar" and then store into searchInput
+    let searchInput = document.getElementById("searchBar");
+
+    console.log(searchInput.value);
+    renderUser(searchInput.value);
 }
 
