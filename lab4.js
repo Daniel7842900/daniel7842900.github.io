@@ -6,6 +6,17 @@ document.addEventListener('DOMContentLoaded', function(){
     
 }, false);
 
+let http = require('http');
+
+function rqListener(request, response) {
+    console.log(request);
+    console.log(response);
+}
+
+let server = http.createServer(rqListener);
+
+server.listen(8080);
+
 function showAdd() {
     var x = document.getElementById("addDiv");
     if (x.style.display == "flex") {
@@ -150,4 +161,5 @@ function search() {
     console.log(searchInput.value);
     renderUser(searchInput.value);
 }
+
 
